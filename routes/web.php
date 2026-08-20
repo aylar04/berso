@@ -19,6 +19,7 @@ Route::group([
     "prefix" => "User",
     "controller" => UserController::class,
 ], function () {
+    Route::post("/send_code" , "sendCode")->name('send_code');
     // SignUp
     Route::post("/createSignUp", "createSignup")->name("createSignup");
 
