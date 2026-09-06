@@ -26,10 +26,8 @@
                         <span class="w-6.5 h-[3px] bg-(--primary-blue) rounded-full"></span>
                     </div>
                 </div>
-                <div class="max-lg:w-1/3 flex gap-1.5 items-end justify-center">
-                    <span
-                        class="text-[var(--dark-text)] xl:text-[30px] lg:text-[23px] md:text-[21px] text-[13px] lg:leading-4 md:leading-4 leading-3 font-bold">berso</span>
-                    <img src="{{asset('storage/home/logo.png')}}" alt="" class="xl:w-8 lg:w-6 sm:w-7 w-5">
+                <div class="max-lg:w-1/3 flex justify-center items-center">
+                    <img src="{{asset('storage/home/logo.webp')}}" alt="" class="w-22">
                 </div>
                 <div class="max-lg:hidden lg:flex w-8/12 h-auto flex justify-center rounded-xl mx-auto">
                     <ul
@@ -175,50 +173,47 @@
     </header>
     <div class="fixed top-0 w-full h-dvh flex right-0 justify-center invisible opacity-0 items-center transition-all duration-300 z-5" id="loginpupop">
         <div class="w-full h-full bg-black/20" onclick="login('clos')"></div>
-        <div class="absolute w-4/12 h-17/24 bg-white rounded-2xl flex flex-col gap-3 p-5">
+        <div class="absolute w-10/12 md:w-6/12 lg:w-4/12 sm:h-17/24 h-13/24 bg-white rounded-2xl flex flex-col gap-3 p-5">
             <div class="flex justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-5 fill-[#767676] cursor-pointer" onclick="login('clos')">
                     <path d="M324.5 411.1c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L214.6 256 347.1 123.5c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0L192 233.4 59.5 100.9c-6.2-6.2-16.4-6.2-22.6 0s-6.2 16.4 0 22.6L169.4 256 36.9 388.5c-6.2 6.2-6.2 16.4 0 22.6s16.4 6.2 22.6 0L192 278.6 324.5 411.1z"/>
                 </svg>
             </div>
-            <div class="w-full flex flex-col items-center gap-3">
-                <div class="max-lg:w-1/3 flex gap-1.5 items-end justify-center">
-                    <span class="text-[var(--dark-text)] xl:text-[30px] lg:text-[23px] md:text-[21px] text-[13px] lg:leading-4 md:leading-4 leading-3 font-bold">berso</span>
-                    <img src="{{asset('storage/home/logo.png')}}" alt="" class="xl:w-13 lg:w-9 sm:w-7 w-5">
+            <div class="w-full flex flex-col items-center sm:justify-between justify-evenly gap-3">
+                <div class="w-1/3 flex items-center justify-center">
+                    <img src="{{asset('storage/home/logo.webp')}}" alt="" class="min-w-22 max-w-22">
                 </div>
-                <form action="{{ route('User.LoginUser') }}" method="POST" id="logInForm" class="w-full mx-auto flex items-center flex-col gap-3 rounded-3xl p-6 my-5">
+                <form action="{{ route('User.LoginUser') }}" method="POST" id="logInForm" class="w-full mx-auto flex items-center flex-col sm:gap-3 gap-2 rounded-3xl sm:p-6 px-4 sm:mt-4">
                     @csrf
                     <h1 class="text-white text-xl">login</h1>
-                    <input class="w-full rounded-full bg-(--very-light-violet) p-3" name="phoneNumber" type="text" placeholder="شمره تلفن"
+                    <input class="w-full rounded-2xl bg-(--very-light-violet) p-3" name="phoneNumber" type="text" placeholder="شماره تلفن"
                         id="phoneNumberlogin">
                     <div id="phoneNumberSection"></div>
 
-                    <input class="w-full rounded-full bg-(--very-light-violet) p-3 hidden" name="password" type="password"
+                    <input class="w-full rounded-2xl bg-(--very-light-violet) p-3 hidden" name="password" type="password"
                         placeholder="رمز عبور" id="passwordlogin">
                     <div id="passwordSection"></div>
 
                     <div class="w-full flex gap-2 justify-between" id="codeBox">
-                        <input class="bg-(--very-light-violet) p-3 rounded-full" name="code" type="text" placeholder="کد"
+                        <input class="bg-(--very-light-violet) p-3 w-8/12 rounded-2xl" name="code" type="text" placeholder="کد"
                             id="codelogin">
                         <button type="button" onclick="sendCodelogin(this)"
-                            class="bg-[orange] w-2/10 text-center text-white flex items-center rounded-lg justify-center">ارسال
+                            class="bg-(--dark-text) min-w-3/10 max-w-4/10 text-center text-white flex items-center rounded-lg justify-center">ارسال
                             کد</button>
                     </div>
-
-                    <div class="flex gap-5 justify-between">
+                    <div class="flex gap-5 justify-between mt-4">
                         <div class="cursor-pointer hover:text-blue-500" onclick="loginWithPass(this)">ورود با پسورد</div>
-                        <div><a href="" class="hover:text-blue-500">فراموش کردن رمز عبور</a></div>
                     </div>
-
-                    <button type="button" class="w-3/12 p-3 rounded-3xl bg-(--primary-blue) text-white mt-5" onclick="loginCode(event)"
-                        id="submitBtn">ورود
-                    </button>
-                    <div class="w-9/12 flex flex-col items-center gap-3 p-2">
-                        <div class="w-full bg-(--primary-blue) rounded-3xl h-[3px]"></div>    
-                        <span class="text-xl text-(--primary-blue) cursor-pointer" onclick="change('signup')">ثبت نام!</span>
+                    <div class="flex gap-2 items-center">
+                        <button type="button" class="w-4/12 p-1 px-2 sm:p-3 sm:rounded-3xl rounded-xl bg-(--primary-blue) text-white " onclick="loginCode(event)"
+                            id="submitBtn">ورود
+                        </button>
+                        <div class="w-9/12 flex flex-col items-center gap-3 p-2">
+                            <span class="text-xl text-(--primary-blue) cursor-pointer" onclick="change('signup')">ثبت نام!</span>
+                        </div>
                     </div>
                 </form>
-                <form action="{{ route('User.createSignup') }}" method="POST" id="signupForm" class="w-full mx-auto invisible opacity-0 flex items-center flex-col absolute gap-3 rounded-3xl p-6 my-5">
+                <form action="{{ route('User.createSignup') }}" method="POST" id="signupForm" class="w-full mx-auto invisible opacity-0 flex items-center flex-col absolute sm:gap-3 gap-2 rounded-3xl sm:p-6 px-4 sm:mt-4">
                     @csrf
                     @if(session('message'))
                         <script>
@@ -228,30 +223,29 @@
                         </script>
                     @endif
                     <h1 class="text-white text-xl">signUp</h1>
-                    <input class="w-full rounded-full bg-(--very-light-violet) p-3" name="phoneNumber" type="text" placeholder="شماره تلفن"
+                    <input class="w-full rounded-2xl bg-(--very-light-violet) p-3" name="phoneNumber" type="text" placeholder="شماره تلفن"
                         id="phoneNumber" value="{{ old("phoneNumber") }}">
                     <div id="phoneNumberSection"></div>
                     <!-- @error("phoneNumber")
                         <div class="text-red-500">{{ $message }}</div>
                     @enderror -->
-                    <input class="w-full rounded-full bg-(--very-light-violet) p-3" name="password" type="text" placeholder="رمز عبور"
+                    <input class="w-full rounded-2xl bg-(--very-light-violet) p-3" name="password" type="text" placeholder="رمز عبور"
                         id="password" value="{{ old("password") }}">
                     <div id="passwordSection"></div>
 
                     <div class="w-full flex gap-2 justify-between">
-                        <input class="bg-(--very-light-violet) p-3 rounded-full" name="code" type="text" placeholder="کد"
+                        <input class="bg-(--very-light-violet) p-3 w-8/12 rounded-2xl" name="code" type="text" placeholder="کد"
                             id="code">
                         <button type="button" onclick="sendCode(this)"
-                            class="bg-[orange] w-2/10 text-center text-white flex items-center rounded-lg justify-center">ارسال
+                            class="bg-(--dark-text) w-4/10 text-center text-white flex items-center rounded-lg justify-center">ارسال
                             کد</button>
                     </div>
                     <!-- @error("password")
                         <div class="text-red-400">{{ $message }}</div>
                     @enderror -->
-                    <button class="w-3/12 p-3 rounded-3xl bg-(--primary-blue) text-white mt-5" onclick="signUp(event)">ثبت نام</button>
-                    <div class="w-9/12 flex flex-col items-center gap-3 p-2">
-                        <div class="w-full bg-(--primary-blue) rounded-3xl h-[3px]"></div>    
-                        <span class="text-xl text-(--primary-blue) cursor-pointer" onclick="change('login')">ورود!</span>
+                    <div class="w-full justify-center flex items-center gap-3 p-2">
+                    <button class="p-3 rounded-3xl bg-(--primary-blue) text-white" onclick="signUp(event)">ثبت نام</button>
+                        <span class=" text-xl text-(--primary-blue) cursor-pointer" onclick="change('login')">ورود!</span>
                     </div>
                 </form>
             </div>
@@ -260,7 +254,7 @@
     <main class="mt-10 flex flex-col gap-10 justify-start items-center">
         <!-- identify_vidio-start -->
         <section class="w-full flex justify-center">
-            <div class="w-11/12 rounded-xl flex flex-col md:flex-row gap-4 bg-blue-700 px-4 lg:py-6 py-4">
+            <div class="w-11/12 rounded-xl flex flex-col md:flex-row gap-4 px-4 lg:py-6 py-4 bg-[url({{asset('storage/home/background_identify.webp')}})] bg-center bg-cover">
                 <div class="w-full md:w-1/2 flex justify-center items-center">
                     <div class="w-full  lg:h-60 xl:65 sm:h-50 h-40 bg-(--bg-secondary) rounded-xl flex items-center justify-center">
                         <img class="rounded-xl w-full h-full" src="{{asset('storage/home/6-11.png')}}" alt="">
@@ -567,8 +561,8 @@
             <div class="w-11/12 h-6/12 project flex flex-col items-center py-3 gap-5">
                 <h2 class="text-(--primary-blue)">نمونه کار ها</h2>
                 <span class="font-bold text-2xl text-(--dark-text)">برخی از پروژه های اخیر ما</span>
-                <div class="max-w-full w-full flex justify-start itmsx-center xl:gap-4.5 lg:gap-3 sm:gap-2 gap-1 overflow-x-auto">
-                    <div class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                <div class="max-w-full w-full flex justify-start itmsx-center xl:gap-4.5 lg:gap-3 sm:gap-2 gap-1 overflow-x-auto [&::-webkit-scrollbar]:h-2  [&::-webkit-scrollbar-thumb]:bg-gradient-to-r [&::-webkit-scrollbar-thumb]:from-[#233561] [&::-webkit-scrollbar-thumb]:via-[#1e40af] [&::-webkit-scrollbar-thumb]:to-[#38bdf8]  [&::-webkit-scrollbar-thumb]:rounded-full">
+                    <a href="https://caffegreen.com/" target="_blank" class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
 
                         <!-- Image -->
                         <div class="w-full h-full ">
@@ -591,7 +585,7 @@
                             <div class="flex flex-col text-end">
                                 <h4
                                     class="text-lg md:text-xl font-bold text-(--white) mb-1 transition-colors duration-300 group-hover:text-(--primary-blue)">
-                                    فروشگاه
+                                    کافه گرین
                                 </h4>
                                 <p
                                     class="text-[#9b9d9e] text-sm transition-colors duration-300 group-hover:text-[#c0c2c4]">
@@ -599,12 +593,12 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                    </a>
+                    <a href="https://shahkar.art/" target="_blank" class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
 
                         <!-- Image -->
                         <div class="w-full h-full ">
-                            <img src="{{asset('storage/home/caffegreen.png')}}" alt="project image"
+                            <img src="{{asset('storage/home/shahkarpng.webp')}}" alt="project image"
                                  class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
                             <!-- گرادیانت روی عکس -->
                             <!-- <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div> -->
@@ -623,7 +617,7 @@
                             <div class="flex flex-col text-end">
                                 <h4
                                         class="text-lg md:text-xl font-bold text-(--white) mb-1 transition-colors duration-300 group-hover:text-(--primary-blue)">
-                                    فروشگاه
+                                    چاپ شاهکار
                                 </h4>
                                 <p
                                         class="text-[#9b9d9e] text-sm transition-colors duration-300 group-hover:text-[#c0c2c4]">
@@ -631,12 +625,12 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                    </a>
+                    <a href="https://ringaa.ir/" target="_blank" class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
 
                         <!-- Image -->
                         <div class="w-full h-full overflow-hidden">
-                            <img src="{{asset('storage/home/caffegreen.png')}}" alt="project image"
+                            <img src="{{asset('storage/home/ringa.webp')}}" alt="project image"
                                 class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
                             <!-- گرادیانت روی عکس -->
                             <!-- <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div> -->
@@ -655,7 +649,7 @@
                             <div class="flex flex-col text-end">
                                 <h4
                                     class="text-lg md:text-xl font-bold text-(--white) mb-1 transition-colors duration-300 group-hover:text-(--primary-blue)">
-                                    فروشگاه
+                                    رینکا
                                 </h4>
                                 <p
                                     class="text-[#9b9d9e] text-sm transition-colors duration-300 group-hover:text-[#c0c2c4]">
@@ -663,12 +657,12 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                    </a>
+                    <a href="https://rinteach.ir/" target="_blank" class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
 
                         <!-- Image -->
                         <div class="w-full h-full overflow-hidden">
-                            <img src="{{asset('storage/home/caffegreen.png')}}" alt="project image"
+                            <img src="{{asset('storage/home/rinTeach.webp')}}" alt="project image"
                                  class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
                             <!-- گرادیانت روی عکس -->
                             <!-- <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div> -->
@@ -687,7 +681,7 @@
                             <div class="flex flex-col text-end">
                                 <h4
                                         class="text-lg md:text-xl font-bold text-(--white) mb-1 transition-colors duration-300 group-hover:text-(--primary-blue)">
-                                    فروشگاه
+                                    زبان رینتیج
                                 </h4>
                                 <p
                                         class="text-[#9b9d9e] text-sm transition-colors duration-300 group-hover:text-[#c0c2c4]">
@@ -695,12 +689,12 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
+                    </a>
+                    <a href="https://mrshimy.ir/" target="_blank" class="relative xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full flex justify-center h-60 group bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:border-yellow-400/30 hover:shadow-[0_20px_60px_rgba(255,193,7,0.08)] shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
 
                         <!-- Image -->
                         <div class="w-full h-full overflow-hidden">
-                            <img src="{{asset('storage/home/caffegreen.png')}}" alt="project image"
+                            <img src="{{asset('storage/home/mrsimy.webp')}}" alt="project image"
                                  class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110">
                             <!-- گرادیانت روی عکس -->
                             <!-- <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div> -->
@@ -719,7 +713,7 @@
                             <div class="flex flex-col text-end">
                                 <h4
                                         class="text-lg md:text-xl font-bold text-(--white) mb-1 transition-colors duration-300 group-hover:text-(--primary-blue)">
-                                    فروشگاه
+                                    معلم شیمی
                                 </h4>
                                 <p
                                         class="text-[#9b9d9e] text-sm transition-colors duration-300 group-hover:text-[#c0c2c4]">
@@ -727,7 +721,7 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                 </div>
             </div>
@@ -842,7 +836,7 @@
                         مقالات</h3>
                 </div>
                 <div
-                    class="max-w-full w-full flex justify-start xl:gap-4.5 lg:gap-3 sm:gap-2 gap-1 overflow-x-auto lg:px-8 md:px-6 px-3 py-5">
+                    class="max-w-full w-full flex justify-start xl:gap-4.5 lg:gap-3 sm:gap-2 gap-1 overflow-x-auto lg:px-8 md:px-6 px-3 py-5 [&::-webkit-scrollbar]:h-2  [&::-webkit-scrollbar-thumb]:bg-gradient-to-r [&::-webkit-scrollbar-thumb]:from-[#233561] [&::-webkit-scrollbar-thumb]:via-[#1e40af] [&::-webkit-scrollbar-thumb]:to-[#38bdf8]  [&::-webkit-scrollbar-thumb]:rounded-full">
                     <div class="xl:min-w-24/100 lg:min-w-32/100 sm:min-w-49/100 min-w-full xl:max-w-24/100 lg:max-w-32/100 sm:max-w-49/100 min-h-full bg-[var(--card-background)] rounded-md flex flex-col  gap-1 items-center justify-between sm:p-1 p-0.5 cart_shadow">
                         <div class="w-full h-1/2 max-h-40">
                             <img src="{{asset('storage/home/article4.jpg')}}" alt=""
@@ -1206,10 +1200,8 @@
                     <div
                         class="lg:w-full md:w-1/2 w-full h-full flex flex-col lg:gap-6 gap-4 justify-start max-lg:items-center items-start">
                         <div class="lg:w-10/12 w-11/12 flex flex-col lg:gap-6 gap-4 justify-start items-start ">
-                            <div class="w-full flex gap-1.5 items-end justify-center">
-                                <span
-                                    class="text-[white] xl:text-[20px] lg:text-[18px] md:text-[28px] text-[38px] lg:leading-3 md:leading-4 leading-6 font-bold">berso</span>
-                                <img src="{{asset('storage/home/logo.png')}}" alt="" class="w-1/12">
+                            <div class="w-full">
+                                <img src="{{asset('storage/home/logo.webp')}}" alt="" class="w-22">
                             </div>
                             <p
                                 class="w-full xl:text-sm lg:text-xs text-[11px] font-bold text-[#f4f1ff] max-lg:text-center ">
