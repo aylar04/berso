@@ -10,7 +10,6 @@ use App\Http\Middleware;
 use App\Models\User;
 
 Route::view('/', 'home')->name('home');
-Route::view("/Dashbord", "Dashbord")->name("Dashbord");
 Route::view("/signUp", "signUp")->name("vieWsignUp");
 Route::view("/login", "login")->name("vieWlogin");
 
@@ -19,15 +18,13 @@ Route::group([
     "prefix" => "User",
     "controller" => UserController::class,
 ], function () {
+    Route::get("/profile" , 'profile')->name('profile');
     Route::post("/send_code" , "sendCode")->name('send_code');
-    // SignUp
     Route::post("/createSignUp", "createSignup")->name("createSignup");
-
-    // login
     Route::post("/LoginUser", "LoginUser")->name("LoginUser");
-
-    // logOut
     Route::get("/logOut", "logOut")->name("logOut");
+    Route::get("/edit/{user}" , 'edit')->name('edit');
+    Route::post("/update/{user}" , "update")->name('update');
 });
 
 Route::group([
