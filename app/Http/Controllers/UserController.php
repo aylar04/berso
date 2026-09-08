@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\phone_code;
+use App\Models\role_user;
+use App\Models\role;
 use Log;
 use Symfony\Contracts\Service\Attribute\Required;
 
@@ -30,9 +32,13 @@ class UserController extends Controller
             return redirect()->back()->with('message', 'این شماره تلفن قبلا استفاده شده');
         }
         if (!$user) {
-            User::create([
+            $user_id=User::insertGetId([
                 'phoneNumber' => $phoneNumber,
                 'password' => Hash::make($password)
+            ]);
+            role_user::create([
+                'role_id'=>2,
+                'user_id'=>$user_id
             ]);
             $user = User::where("phoneNumber", $phoneNumber)->first();
             Auth::login($user);
@@ -129,5 +135,23 @@ class UserController extends Controller
             return response()->json(false);
         }
         return response()->json(false);
+    }
+    public function profile(){
+        $user=Auth::user();
+        return view('admin.user.profile' , ['user'=>$user]);
+    }
+    public function edit(User $user){
+        $roles=role::all();
+        return view('admin.user.edit' , ['user'=>$user , 'roles'=>$roles]);
+    }
+    public function update(User $user ,Request $request){
+        $user->name=$request->name;
+        $user->family=$request->family;
+        $user->phoneNumber=$request->phoneNumber;
+        if($request->password){
+            $user->password=$request->password;
+        }
+        $user->save();
+        return to_route('User.profile');
     }
 }

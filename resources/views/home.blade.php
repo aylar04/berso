@@ -64,12 +64,56 @@
                         </li>
                     </ul>
                 </div>
+                @if(Auth::check())
+                <div class="flex items-center gap-3 sm:gap-5">
+                    <div class="relative profile-menu-container">
+                        <div class="flex items-center gap-2 border-r border-gray-200 pr-2 sm:pr-4 cursor-pointer" id="profileButton" onclick="profile()">
+                            <svg class="w-8 h-8 sm:w-10 sm:h-10 rounded-full shadow-md border-2 border-white fill-(--primary-blue)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z"></path>
+                            </svg>
+                            <div class="hidden lg:block text-right text-sm font-medium ">
+                                @if(Auth::user()->name && Auth::user()->family)
+                                {{Auth::user()->name}} {{Auth::user()->family}}
+                                @else
+                                کاربر عادی
+                                @endif
+                            </div>
+                            <svg class="size-4 sm:size-5 text-white hidden lg:block transition-transform duration-200" id="chevronIcon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
 
+                        <div id="dropdownMenu" class="hidden absolute mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-[99999] left-0 right-auto sm:left-auto sm:right-0">
+                            <a href="{{ route('home') }}" class="flex items-center gap-3 px-4 py-2 text-gray-700 text-sm hover:bg-blue-50 transition-colors duration-150">
+                                <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                                </svg>
+                                <span>خانه</span>
+                            </a>
+                            <div class="border-t border-gray-100 my-1"></div>
+                            <a href="{{route('User.profile')}}" class="flex items-center gap-3 px-4 py-2 text-gray-700 text-sm hover:bg-blue-50 transition-colors duration-150">
+                                <svg class="w-4 h-4 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                                <span>پروفایل کاربری</span>
+                            </a>
+                            <div class="border-t border-gray-100 my-1"></div>
+                            <a href="" class="flex items-center gap-3 px-4 py-2 text-gray-700 text-sm hover:bg-blue-50 transition-colors duration-150">
+                                <svg class="w-4 h-4 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                <span>خروج از حساب کاربری</span>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+                @else
                 <div class="max-lg:w-1/3 flex justify-end items-center">
                     <div class="bg-(--primary-blue) inline-block text-(--white) px-2 md:px-4 py-2 md:py-3 rounded-3xl text-xs md:text-sm font-bold cursor-pointer hover:bg-blue-700 transition-all duration-300" onclick="login('open')">
                         ورود / ثبت نام
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         <div
@@ -173,7 +217,7 @@
     </header>
     <div class="fixed top-0 w-full h-dvh flex right-0 justify-center invisible opacity-0 items-center transition-all duration-300 z-5" id="loginpupop">
         <div class="w-full h-full bg-black/20" onclick="login('clos')"></div>
-        <div class="absolute w-10/12 md:w-6/12 lg:w-4/12 sm:h-17/24 h-13/24 bg-white rounded-2xl flex flex-col gap-3 p-5">
+        <div class="absolute w-10/12 md:w-6/12 lg:w-4/12 sm:h-27/48 h-12/24 bg-white rounded-2xl flex flex-col gap-3 p-5">
             <div class="flex justify-end">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="size-5 fill-[#767676] cursor-pointer" onclick="login('clos')">
                     <path d="M324.5 411.1c6.2 6.2 16.4 6.2 22.6 0s6.2-16.4 0-22.6L214.6 256 347.1 123.5c6.2-6.2 6.2-16.4 0-22.6s-16.4-6.2-22.6 0L192 233.4 59.5 100.9c-6.2-6.2-16.4-6.2-22.6 0s-6.2 16.4 0 22.6L169.4 256 36.9 388.5c-6.2 6.2-6.2 16.4 0 22.6s16.4 6.2 22.6 0L192 278.6 324.5 411.1z"/>
@@ -209,7 +253,7 @@
                             id="submitBtn">ورود
                         </button>
                         <div class="w-9/12 flex flex-col items-center gap-3 p-2">
-                            <span class="text-xl text-(--primary-blue) cursor-pointer" onclick="change('signup')">ثبت نام!</span>
+                            <span class="text-lg text-(--primary-blue) cursor-pointer" onclick="change('signup')">ثبت نام!</span>
                         </div>
                     </div>
                 </form>
@@ -245,7 +289,7 @@
                     @enderror -->
                     <div class="w-full justify-center flex items-center gap-3 p-2">
                     <button class="p-3 rounded-3xl bg-(--primary-blue) text-white" onclick="signUp(event)">ثبت نام</button>
-                        <span class=" text-xl text-(--primary-blue) cursor-pointer" onclick="change('login')">ورود!</span>
+                        <span class=" text-lg text-(--primary-blue) cursor-pointer" onclick="change('login')">ورود!</span>
                     </div>
                 </form>
             </div>
@@ -1443,6 +1487,49 @@
     <script src="{{ asset('assets/js/berso.js') }}"></script>
      <script>
 
+        const profileButton = document.getElementById('profileButton');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+        const chevronIcon = document.getElementById('chevronIcon');
+
+        // profileButton.addEventListener('click', (e) => {
+        function profile(){
+            // e.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+
+            if (!dropdownMenu.classList.contains('hidden')) {
+                const rect = profileButton.getBoundingClientRect();
+                const menuRect = dropdownMenu.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+
+                if (rect.right + menuRect.width > viewportWidth) {
+                    dropdownMenu.style.left = 'auto';
+                    dropdownMenu.style.right = '0';
+                } else {
+                    dropdownMenu.style.left = '0';
+                    dropdownMenu.style.right = 'auto';
+                }
+
+                if (chevronIcon) {
+                    chevronIcon.style.transform = 'rotate(180deg)';
+                }
+            } else {
+                if (chevronIcon) {
+                    chevronIcon.style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+        // });
+
+        // document.addEventListener('click', (e) => {
+        //     if (!profileButton.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        //         dropdownMenu.classList.add('hidden');
+        //         if (chevronIcon) {
+        //             chevronIcon.style.transform = 'rotate(0deg)';
+        //         }
+        //     }
+        // });
+
+
         let phoneNumber = document.getElementById("phoneNumber");
         let password = document.getElementById("password");
         let code = document.getElementById("code");
@@ -1459,6 +1546,8 @@
                     dataType: "json",
                     data: { "phoneNumber": phoneNumber.value },
                     success: function (response) {
+                        console.log(response)
+                        return
                         if (!response) {
                             alert("این کاربر قبلا ثبت نام کرده است")
                             location.assign(link + 'login')
@@ -1493,8 +1582,11 @@
                 });
             }
         }
-    let loginpupop=document.getElementById('loginpupop');
-    function login(dor){
+
+
+    let loginpupop=document.getElementById('loginpupop')
+    function login(dor){     
+        console.log(loginpupop)   
         if(dor=="open"){
             loginpupop.classList.remove('invisible');
             loginpupop.classList.remove('opacity-0');
