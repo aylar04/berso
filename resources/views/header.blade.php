@@ -282,11 +282,11 @@
     </div>
     <script>
         let api = "{{ url('/api') }}/"
-        // var route={
-        //     userSend_code:'{{route("User.send_code")}}',
-        //     CheckActivationCode:"{{route('User.CheckActivationCode')}}",
-        //     userLogincode:"{{route('User.logincode')}}",
-        //     userLoginPass:"{{route('User.loginPass')}}",
-        //     usersendLoginCode:"{{route('User.sendLoginCode')}}"
-        // }
+        var route={
+            userSend_code:'{{route("User.send_code")}}',
+            CheckActivationCode:"{{route('User.CheckActivationCode')}}",
+            userLogincode:"{{route('User.logincode')}}",
+            userLoginPass:"{{route('User.loginPass')}}",
+            usersendLoginCode:"{{route('User.sendLoginCode')}}"
+        }
     </script>
