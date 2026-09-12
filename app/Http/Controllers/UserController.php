@@ -48,7 +48,7 @@ class UserController extends Controller
     public function logOut()
     {
         Auth::logout();
-        return redirect("/");
+        return to_route('home');
     }
     public function sendCode(Request $request)
     {
@@ -154,4 +154,6 @@ class UserController extends Controller
         $user->save();
         return to_route('User.profile');
     }
+
+    
 }
