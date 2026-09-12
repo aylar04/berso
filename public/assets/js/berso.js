@@ -62,21 +62,23 @@
         let password = document.getElementById("password");
         let code = document.getElementById("code");
         let signupForm = document.getElementById("signupForm");
-        let link = "{{ url('/') }}/";
+
 
         function sendCode(el) {
-
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
             if (phoneNumber.value == "") {
                 alert("پرکردن همه فیلد ها الزامیست");
             } else {
                 $.ajax({
-                    url: api+'send_code',
+                    url: route.userSend_code,
                     type: "POST",
                     dataType: "json",
                     data: { "phoneNumber": phoneNumber.value },
                     success: function (response) {
-                        console.log(response)
-                        return
                         if (!response) {
                             alert("این کاربر قبلا ثبت نام کرده است")
                             location.assign(link + 'login')
@@ -91,13 +93,17 @@
  
 
         function signUp(e) {
-
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
             e.preventDefault()
             if (phoneNumber.value == "" || password.value == "" || code.value == "") {
                 alert("پرکردن همه ی فیلد ها الزامی است");
             } else {
                 $.ajax({
-                    url: api+'CheckActivationCode',
+                    url: route.CheckActivationCode,
                     type: "POST",
                     dataType: "json",
                     data: { "phoneNumber": phoneNumber.value, "password": password.value, "code": code.value },
@@ -160,13 +166,17 @@
     }
 
     function loginCode(e) {
-
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
         e.preventDefault();
         if (phoneNumberlogin.value == "" || codelogin.value == "") {
             alert("پرکردن همه فیلد ها الزامیست");
         } else {
             $.ajax({
-                url: api+'logincode',
+                url: route.userLogincode,
                 type: "POST",
                 dataType: "json",
                 data: { "phoneNumber": phoneNumberlogin.value, "code": codelogin.value },
@@ -183,13 +193,17 @@
     }
 
     function loginPass(e) {
-
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
         e.preventDefault();
         if (phoneNumberlogin.value == "" || passwordlogin.value == "") {
             alert("همه فیلد ها الزامیست");
         } else {
             $.ajax({
-                url: api+'loginPass',
+                url: route.userLoginPass,
                 type: "POST",
                 dataType: "json",
                 data: { "phoneNumber": phoneNumberlogin.value, "password": passwordlogin.value },
@@ -206,12 +220,16 @@
     }
 
     function sendCodelogin(el) {
-
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        });
         if (phoneNumberlogin.value == "") {
             alert("شماره موبایل الزامیست")
         } else {
             $.ajax({
-                url: api+'sendLoginCode',
+                url: route.usersendLoginCode,
                 type: "POST",
                 dataType: "json",
                 data: { "phoneNumber": phoneNumberlogin.value },
