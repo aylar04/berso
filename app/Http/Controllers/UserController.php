@@ -154,6 +154,4 @@ class UserController extends Controller
         $user->save();
         return to_route('User.profile');
     }
-
-    
 }

@@ -45,4 +45,6 @@ Route::group([
     "controller" => ArticleController::class
 ], function () {
 Route::get('/list','index')->name('list');
+Route::get("/create" , 'create')->name('create');
+Route::post('store' , 'store')->name('store');
 });
