@@ -73,36 +73,6 @@
                         پروفایل
                     </a>
                 </div>
-                <!-- ====== علاقه مندی (تصحیح شده با کلاس dashboard) ====== -->
-                    <div class="dashboard">
-                    <div
-                        class="flex justify-between flex-row-reverse cursor-pointer px-2 rounded-sm py-1.5 @if (Route::is('favorites.*')) bg-gray-700 @endif">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="size-4 transition-all duration-200 @if (Route::is('favorites.*')) rotate-180 @endif"
-                            viewBox="0 0 448 512">
-                            <path fill="white"
-                                d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z" />
-                        </svg>
-
-                        <div class="flex flex-row-reverse items-center gap-2">
-                            <span class=" text-[white] flex justify-end font-bold">علاقه مندی ها</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-5">
-                                <path fill="white" d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
-                        </svg>
-                        </div>
-                    </div>
-                    <ul
-                        class="my-1 pr-3 transition-all duration-500 overflow-hidden @if (Route::is('favorites.*')) max-h-[500px] @else max-h-0 @endif">
-                        <li
-                            class="flex flex-row items-center gap-2.5 mt-2.5 mb-2.5 pr-5 rounded-sm @if (Route::is('favorites.list')) bg-gray-700 @endif">
-                            <span class="size-1 bg-white rounded-sm"></span>
-                            <a href="" class="text-white py-1 block">
-                                لیست علاقه مندی ها
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
                  @can('panelCan','admin')
                 <div class="dashboard">
                     <div class="flex justify-between flex-row-reverse cursor-pointer px-2 rounded-sm py-1.5 @if (Route::is('user.*') && !Route::is('user.profile') || Route::is('permission.*') || Route::is('role.*')) bg-gray-700 @endif">
@@ -153,27 +123,38 @@
                         </li>
                        
                     </ul>
-                </div>
+                </div>             
                 <div class="dashboard">
-                    <div
-                        class="flex justify-between flex-row-reverse cursor-pointer px-2 rounded-sm py-1.5 @if (Route::is('menu.*')) bg-gray-700 @endif">
+                    <div class="flex justify-between flex-row-reverse cursor-pointer px-2 rounded-sm py-1.5 @if (Route::is('user.*') && !Route::is('user.profile') || Route::is('permission.*') || Route::is('role.*')) bg-gray-700 @endif">
                         <svg xmlns="http://www.w3.org/2000/svg"
-                            class="size-4 transition-all duration-200 @if (Route::is('menu.*')) rotate-180 @endif"
+                            class="size-4 transition-all duration-200 @if (Route::is('user.*') && !Route::is('user.profile') || Route::is('permission.*') || Route::is('role.*')) rotate-180 @endif"
                             viewBox="0 0 448 512">
                             <path fill="white"
                                 d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z" />
                         </svg>
-
                         <div class="flex flex-row-reverse items-center gap-2">
-                            <span class=" text-[white] flex justify-end font-bold">مدیریت منو</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 512 512">
+                            <span class=" text-[white] flex justify-end font-bold">مقالات</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" class="size-5">
                                 <path fill="white"
-                                    d="M384 48c8.8 0 16 7.2 16 16V448c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16H384zM96 0C60.7 0 32 28.7 32 64V448c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64H96zM240 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128zm-32 32c-44.2 0-80 35.8-80 80c0 8.8 7.2 16 16 16H336c8.8 0 16-7.2 16-16c0-44.2-35.8-80-80-80H208zM512 80c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V80zM496 192c-8.8 0-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V208c0-8.8-7.2-16-16-16zm16 144c0-8.8-7.2-16-16-16s-16 7.2-16 16v64c0 8.8 7.2 16 16 16s16-7.2 16-16V336z" />
+                                    d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h42.7c15.9 0 31 3.5 44.6 9.7c-1.3 7.2-1.9 14.7-1.9 22.3c0 38.2 16.8 72.5 43.3 96c-.2 0-.4 0-.7 0H21.3C9.6 320 0 310.4 0 298.7zM405.3 320c-.2 0-.4 0-.7 0c26.6-23.5 43.3-57.8 43.3-96c0-7.6-.7-15-1.9-22.3c13.6-6.3 28.7-9.7 44.6-9.7h42.7C592.2 192 640 239.8 640 298.7c0 11.8-9.6 21.3-21.3 21.3H405.3zM224 224a96 96 0 1 1 192 0 96 96 0 1 1 -192 0zM128 485.3C128 411.7 187.7 352 261.3 352H378.7C452.3 352 512 411.7 512 485.3c0 14.7-11.9 26.7-26.7 26.7H154.7c-14.7 0-26.7-11.9-26.7-26.7z" />
                             </svg>
                         </div>
                     </div>
-                </div>
-             
+                    <ul class="my-1 pr-3 transition-all duration-500 overflow-hidden @if (Route::is('user.*') && !Route::is('user.profile') || Route::is('permission.*') || Route::is('role.*') ) max-h-[500px] @else max-h-0 @endif">
+                        <li class="flex flex-row items-center gap-2.5 mt-2.5 mb-2.5 pr-5 rounded-sm @if (Route::is('user.list')) bg-gray-700 @endif">
+                            <span class="size-1 bg-white rounded-sm"></span>
+                            <a href="" class="text-white py-1 block">
+                                مشاهده همه مقالات
+                            </a>
+                        </li>
+                        <li class="flex flex-row items-center gap-2.5 mt-2.5 mb-2.5 pr-5 rounded-sm @if (Route::is('user.create_user')) bg-gray-700 @endif">
+                            <span class="size-1 bg-white rounded-sm"></span>
+                            <a href="{{route('article.create')}}" class="text-white py-1 block">
+                                 ایجاد مقاله 
+                            </a>
+                        </li>                       
+                    </ul>
+                </div>             
                 <div class="dashboard">
                     <div
                         class="flex justify-between flex-row-reverse cursor-pointer px-2 rounded-sm py-1.5 @if (Route::is('homeSetting.*')|| Route::is('aboutusSettings.*') || Route::is('contactusSettings.*') || Route::is('footerSetting.*') || Route::is('commentSetting.*')) bg-gray-700 @endif">
@@ -254,44 +235,6 @@
                             <span class="size-1 bg-white rounded-sm"></span>
                             <a href="" class="text-white py-1 block">
                                 آدرس صفحه اول
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-              
-                <div class="dashboard">
-                    <div
-                        class="flex justify-between flex-row-reverse cursor-pointer px-2 rounded-sm py-1.5 @if (Route::is('qrCode.*')) bg-gray-700 @endif">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            class="size-4 transition-all duration-200 @if (Route::is('qrCode.*')) rotate-180 @endif"
-                            viewBox="0 0 448 512">
-                            <path fill="white"
-                                d="M241 337c-9.4 9.4-24.6 9.4-33.9 0L47 177c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l143 143L367 143c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9L241 337z" />
-                        </svg>
-
-                        <div class="flex flex-row-reverse items-center gap-2">
-                            <span class=" text-[white] flex justify-end font-bold">کیوآرکد</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="size-6" viewBox="0 0 448 512">
-                                <path fill="white"
-                                    d="M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80zM64 96v64h64V96H64zM0 336c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336zm64 16v64h64V352H64zM304 32h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H304c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48zm80 64H320v64h64V96zM256 304c0-8.8 7.2-16 16-16h64c8.8 0 16 7.2 16 16s7.2 16 16 16h32c8.8 0 16-7.2 16-16s7.2-16 16-16s16 7.2 16 16v96c0 8.8-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s-7.2-16-16-16s-16 7.2-16 16v64c0 8.8-7.2 16-16 16H272c-8.8 0-16-7.2-16-16V304zM368 480a16 16 0 1 1 0-32 16 16 0 1 1 0 32zm64 0a16 16 0 1 1 0-32 16 16 0 1 1 0 32z" />
-                            </svg>
-                        </div>
-                    </div>
-                    <ul
-                        class="my-1 pr-3 transition-all duration-500 overflow-hidden @if (Route::is('qrCode.*')) max-h-[500px] @else max-h-0 @endif">
-                        <li
-                            class="flex flex-row items-center gap-2.5 mt-2.5 mb-2.5 pr-5 rounded-sm @if (Route::is('qrCode.create')) bg-gray-700 @endif">
-                            <span class="size-1 bg-white rounded-sm"></span>
-                            <a href="" class="text-white py-1 block">
-                                ایجاد کیوآرکد
-                            </a>
-                        </li>
-                        <li
-                            class="flex flex-row items-center gap-2.5 mt-2.5 mb-2.5 pr-5 rounded-sm @if (Route::is('qrCode.list')) bg-gray-700 @endif">
-                            <span class="size-1 bg-white rounded-sm"></span>
-                            <a href="" class="text-white py-1 block">
-                                لیست کیوآرکد
                             </a>
                         </li>
 
@@ -676,39 +619,28 @@
     <script src="{{ asset('assets/js/userPanel.js') }}"></script>
 
     <script>
-        function hamburgerMenu(action, element) {
-            const menu = document.getElementById('mobileMenu');
-            if (action === 'open') {
-                menu.classList.remove('-right-full');
-                menu.classList.add('right-0');
-                document.body.style.overflow = 'hidden';
-            } else {
-                menu.classList.remove('right-0');
-                menu.classList.add('-right-full');
-                document.body.style.overflow = 'auto';
+    let dashboards = document.querySelectorAll(".dashboard")
+    dashboards.forEach(dashboard => {
+        dashboard.children[0].addEventListener('click',()=>{
+            if (dashboard.children[1].classList.contains('max-h-0')) {
+                dashboards.forEach((item)=>{
+                    item.children[1].classList.remove('max-h-[500px]')
+                    item.children[1].classList.add('max-h-0')
+                    item.children[0].children[0].classList.remove('rotate-180')
+                    item.children[0].children[0].classList.add('rotate-0')
+                })
+                dashboard.children[1].classList.remove('max-h-0')
+                dashboard.children[1].classList.add('max-h-[500px]')
+                dashboard.children[0].children[0].classList.remove('rotate-0')
+                dashboard.children[0].children[0].classList.add('rotate-180')
+            }else{
+                dashboard.children[1].classList.remove('max-h-[500px]')
+                dashboard.children[1].classList.add('max-h-0')
+                dashboard.children[0].children[0].classList.remove('rotate-180')
+                dashboard.children[0].children[0].classList.add('rotate-0')
             }
-        }
-
-
-        function toggleMobileSubmenu(headerElement) {
-            const submenu = headerElement.nextElementSibling;
-            const arrowIcon = headerElement.querySelector('svg:first-child');
-
-            submenu.classList.toggle('open');
-            arrowIcon.classList.toggle('rotate');
-        }
-
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuLinks = document.querySelectorAll('#mobileMenu a');
-            mobileMenuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    setTimeout(() => {
-                        hamburgerMenu('close', null);
-                    }, 200);
-                });
-            });
-        });
+        })
+    })
     </script>
 
     @yield('ajax')
